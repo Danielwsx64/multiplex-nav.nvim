@@ -1,5 +1,6 @@
 local notify = require("multiplex.notify")
 local move = require("multiplex.move")
+local resize = require("multiplex.resize")
 local shell = require("multiplex.shell")
 
 local Self = {}
@@ -7,6 +8,7 @@ local Self = {}
 local _commands = {
   ["run"] = shell.run,
   ["move"] = move.to,
+  ["resize"] = resize.to,
 }
 
 function Self.create_commands()

@@ -5,14 +5,19 @@ local execute = require("multiplex.execute")
 
 local Self = {}
 
-function Self.to(direction)
+function Self.to(direction, amount, opts)
+  amount = amount or "1"
+
   if not directions.is_valid(direction) then
     notify.err("Invalid direction " .. direction)
+
     return false
   end
 
-  if not nvim.move_to(direction) then
-    return execute.call("move_to", { direction })
+  if nvim.is_alone_win() or opts == "force_multiplex" then
+    return execute.call("resize_to", { direction, amount })
+  else
+    nvim.resize_to(direction, amount)
   end
 end
 
