@@ -7,6 +7,7 @@ local Self = {}
 
 local _commands = {
   ["run"] = shell.run,
+  ["attach"] = shell.attach,
   ["move"] = move.to,
   ["resize"] = resize.to,
 }

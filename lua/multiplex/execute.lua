@@ -30,7 +30,9 @@ function Self.call(fn_name, args)
     return result
   end
 
-  notify.err("Failed to execute " .. program .. "." .. fn_name .. "() with args: " .. vim.inspect(args))
+  notify.err(
+    "Failed to execute " .. program .. "." .. fn_name .. "() with args: " .. vim.inspect(args) .. " message: " .. result
+  )
 
   return false
 end

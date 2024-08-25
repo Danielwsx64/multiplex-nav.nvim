@@ -21,7 +21,7 @@ function Self.setup()
     Self.state = {
       multiplex = true,
       program = "kitty",
-      pane = nil,
+      pane = os.getenv("KITTY_WINDOW_ID"),
     }
   end
 end
