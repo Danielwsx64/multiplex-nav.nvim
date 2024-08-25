@@ -48,16 +48,22 @@ end
 
 function Self.select_pane_to_run(opt)
   opt = opt or { force = true }
-  local candidate = kitty_run({ "select-window", "--self", "--exclude-active" }, { trim = true })
+  local candidate = kitty_run(
+    { "select-window", "--self", "--exclude-active", "--title", "Select window for run vim commands" },
+    { trim = true }
+  )
 
   if candidate and current.pane() ~= candidate then
     return candidate
   end
 
   if opt.force then
-    kitty_run({ "launch" })
+    kitty_run({ "launch", "--keep-focus" })
 
-    candidate = kitty_run({ "select-window", "--self", "--exclude-active" }, { trim = true })
+    candidate = kitty_run(
+      { "select-window", "--self", "--exclude-active", "--title", "Select window for run vim commands" },
+      { trim = true }
+    )
 
     if candidate and current.pane() ~= candidate then
       return candidate
